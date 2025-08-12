@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/camper/Documentos/proyectoC-/proyectc#.csproj": {}
+    "/home/camper/proyectoC-/proyectc#.csproj": {}
   },
   "projects": {
-    "/home/camper/Documentos/proyectoC-/proyectc#.csproj": {
+    "/home/camper/proyectoC-/proyectc#.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/camper/Documentos/proyectoC-/proyectc#.csproj",
+        "projectUniqueName": "/home/camper/proyectoC-/proyectc#.csproj",
         "projectName": "proyectc#",
-        "projectPath": "/home/camper/Documentos/proyectoC-/proyectc#.csproj",
+        "projectPath": "/home/camper/proyectoC-/proyectc#.csproj",
         "packagesPath": "/home/camper/.nuget/packages/",
-        "outputPath": "/home/camper/Documentos/proyectoC-/obj/",
+        "outputPath": "/home/camper/proyectoC-/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/camper/.nuget/NuGet/NuGet.Config"

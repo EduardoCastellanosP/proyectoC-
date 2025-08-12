@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8pJuaj5PE/w=",
+  "dgSpecHash": "IJIzci9TBrM=",
   "success": true,
-  "projectFilePath": "/home/camper/Documentos/proyectoC-/proyectc#.csproj",
+  "projectFilePath": "/home/camper/proyectoC-/proyectc#.csproj",
   "expectedPackageFiles": [
     "/home/camper/.nuget/packages/bouncycastle.cryptography/2.5.1/bouncycastle.cryptography.2.5.1.nupkg.sha512",
     "/home/camper/.nuget/packages/google.protobuf/3.30.0/google.protobuf.3.30.0.nupkg.sha512",
