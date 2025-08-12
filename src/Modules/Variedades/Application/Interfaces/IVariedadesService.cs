@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Colombian_Coffe.src.Modules.Variedades.Domain.Entities;
+using proyectc_.src.Modules.Variedades.Domain.Entities;
 
-namespace Colombian_Coffe.src.Modules.Variedades.Application.Interfaces;
+namespace proyectc_.src.Modules.Variedades.Application.Interfaces;
 
 public interface IVariedadesService
 {

@@ -2,12 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using proyectc_.src.Shared.Context;
+using proyectc_.src.Modules.Variedades.Domain.Entities;
+using proyectc_.src.Modules.Variedades.Application.Interfaces;
 
 
+namespace proyectc_.src.Modules.Variedades.Infrastructure.Repositories;
 
-namespace Colombian_Coffe.src.Modules.Variedades.Infrastructure.Repositories;
-
-    public class VariedadRepository : IVariedadRepository
+    public class VariedadRepository : IVariedadesRepository
     {
 
         private readonly AppDbContext _context;
@@ -17,7 +20,7 @@ namespace Colombian_Coffe.src.Modules.Variedades.Infrastructure.Repositories;
             _context = context;
         }
 
-        public async Task<Variedad?> GetByIdAsync(int id)
+        public async Task<Variedad?> GetVariedadByIdAsync(int id)
         {
             return await _context.Variedades
             .FirstOrDefaultAsync(v => v.Id == id);

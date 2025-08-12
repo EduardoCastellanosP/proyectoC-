@@ -4,9 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
-using proyectc_.src.Shared.Entities;
-using proyectc_.src.Shared.Entities.Filtros;
-using proyectc_.src.Shared.Entities.Variedades;
+using proyectc_.src.Modules.Variedades.Domain.Entities;
+using proyectc_.src.Modules.Variedades.Infrastructure.Repositories;
 
 
 namespace proyectc_.src.Shared.Context;

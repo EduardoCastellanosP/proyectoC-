@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Colombian_Coffe.src.Modules.Variedades.Application.Interfaces;
-using Colombian_Coffe.src.Modules.Variedades.Domain.Entities;
+using proyectc_.src.Modules.Variedades.Application.Interfaces;
+using proyectc_.src.Modules.Variedades.Domain.Entities;
 
-namespace Colombian_Coffe.src.Modules.Variedades.Application.Services;
+
+
+namespace proyectc_.src.Modules.Variedades.Application.Services;
 
 public class VariedadesService : IVariedadesService
 {
@@ -18,7 +20,7 @@ public class VariedadesService : IVariedadesService
 
     public async Task<IEnumerable<Variedad?>> ConsultarVariedadesAsync()
     {
-        return  _repo.GetAllVariedadesAsync()!;
+        return await _repo.GetAllVariedadesAsync()!;
     }
 
     public async Task<Variedad?> ObtenerVariedadPorIdAsync(int id)
@@ -42,20 +44,29 @@ public class VariedadesService : IVariedadesService
         };
 
         _repo.Add(variedad);
-        await _repo.Update(variedad);
+       _repo.Update(variedad);
     }
-    
-    public async Task ActualizarVariedadAsync(Variedad entity)
+
+    public async Task ActualizarVariedadAsync(int id, string nuevoNombre, string nuevoDescripcion, string nuevoOrigen)
     {
+        var variedad = await _repo.GetVariedadByIdAsync(id);
+        if (variedad == null)
+        
+            throw new KeyNotFoundException("No se encontró la variedad especificada.");
+        variedad.Nombre = nuevoNombre;
+        variedad.Descripcion = nuevoDescripcion;
+        variedad.Origen = nuevoOrigen;
+
+
         await _repo.UpdateVariedadAsync(entity);
     }
 
     public async Task EliminarVariedadAsync(int id)
     {
-         var Variedad = await _repo.GetVariedadByIdAsync(id);
-         if (Variedad != null)
-         {
-             await _repo.RemoveVariedadAsync(Variedad);
-         }
+        var Variedad = await _repo.GetVariedadByIdAsync(id);
+        if (Variedad != null)
+        {
+            await _repo.RemoveVariedadAsync(Variedad);
+        }
     }
 }

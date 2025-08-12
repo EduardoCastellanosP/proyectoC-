@@ -2,24 +2,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Colombian_Coffe.src.Modules.Variedades.Application.Interfaces;
-using Colombian_Coffe.src.Modules.Variedades.Application.Services;
-using Colombian_Coffe.src.Modules.Variedades.Domain.Entities;
+using proyectc_.src.Shared.Context;
 
+using proyectc_.src.Modules.Variedades.Application.Services;    
+using proyectc_.src.Modules.Variedades.Infrastructure.Repositories;
 
-
-namespace Colombian_Coffe.src.Modules.Variedades.UI;
+namespace proyectc_.src.Modules.Variedades.UI;
 
 public class MenuVariedades
 {
     private readonly AppDbContext _context;
-    readonly VariedadesRepository repo = null!;
+    readonly VariedadRepository repo = null!;
     readonly VariedadesService service = null!;
 
     public MenuVariedades(AppDbContext context)
     {
         _context = context;
-        repo = new VariedadesRepository(context);
+        repo = new VariedadRepository(context);
         service = new VariedadesService(repo);
     }
 
@@ -29,7 +28,7 @@ public class MenuVariedades
         while (!salir)
         {
             Console.Clear();
-            DibujarMarcoTitulo("🌱 Variedades – Catálogo / CRUD");
+            Console.WriteLine("🌱 Variedades – Catálogo / CRUD");
             Console.WriteLine("║ 1. Ver catálogo completo                 ║");
             Console.WriteLine("║ 2. Ver ficha técnica (por ID)            ║");
             Console.WriteLine("║ 3. Buscar por texto (nombre/descr.)      ║");
@@ -44,29 +43,29 @@ public class MenuVariedades
             switch (input)
             {
                 case "1":
-                    await VerCatalogoAsync();
+                    // await VerCatalogoAsync();
                     break;
                 case "2":
-                    await VerFichaPorIdAsync();
+                    // await VerFichaPorIdAsync();
                     break;
                 case "3":
-                    await BuscarPorTextoAsync();
+                    // await BuscarPorTextoAsync();
                     break;
                 case "4":
-                    await CrearVariedadAsync();
+                    // await CrearVariedadAsync();
                     break;
                 case "5":
-                    await ActualizarVariedadAsync();
+                    // await ActualizarVariedadAsync();
                     break;
                 case "6":
-                    await EliminarVariedadAsync();
+                    // await EliminarVariedadAsync();
                     break;
                 case "7":
                     salir = true;
                     break;
                 default:
-                    Error("Opción inválida.");
-                    Pausa();
+                    // Error("Opción inválida.");
+                    // Pausa();
                     break;
             }
         }
