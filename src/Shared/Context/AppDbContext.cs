@@ -16,9 +16,9 @@ public class AppDbContext : DbContext
     {
     }
 
-    public DbSet<Usuario> Usuarios => Set<Usuario>();
+    // public DbSet<Usuario> Usuarios => Set<Usuario>();
 
-    public DbSet<Filtro> Filtros => Set<Filtro>();
+    // public DbSet<Filtro> Filtros => Set<Filtro>();
 
     public DbSet<Variedad> Variedades => Set<Variedad>();
 
