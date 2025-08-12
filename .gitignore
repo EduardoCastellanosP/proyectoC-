@@ -1,0 +1,54 @@
+############################################
+# Carpetas de compilación y dependencias
+############################################
+**/bin/
+**/obj/
+[Bb]uild/
+[Bb]uilds/
+
+############################################
+# Configuración local de Visual Studio / VS Code
+############################################
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.idea/
+*.iml
+
+############################################
+# Archivos temporales y de depuración
+############################################
+*.log
+*.tlog
+*.vspscc
+*.vssscc
+*.cache
+*.pdb
+*.mdb
+*.opendb
+*.dbmdl
+*.jfm
+
+############################################
+# Archivos de base de datos locales
+############################################
+*.mdf
+*.ldf
+*.ndf
+
+############################################
+# Archivos generados automáticamente
+############################################
+*.AssemblyInfo.cs
+*.Generated.*
+*.g.cs
+*.g.i.cs
+
+############################################
+# Configuración de extensiones de IDE
+############################################
+_ReSharper*/
+*_ReSharper.*
+*.DotSettings.user
