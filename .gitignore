@@ -1,14 +1,16 @@
 ############################################
 # Archivos y carpetas de compilación (.NET)
 ############################################
-bin/
-obj/
+**/bin/
+**/obj/
 [Bb]uild/
 [Bb]uilds/
 [Bb]in/
 [Oo]bj/
 
+############################################
 # Archivos de compilación de VS Code / Visual Studio
+############################################
 .vs/
 *.suo
 *.user
@@ -16,7 +18,7 @@ obj/
 *.sln.docstates
 
 ############################################
-# Archivos temporales y logs
+# Archivos temporales y de depuración
 ############################################
 *.log
 *.tlog
@@ -28,14 +30,6 @@ obj/
 *.opendb
 *.dbmdl
 *.jfm
-
-############################################
-# Archivos de depuración y perfiles
-############################################
-*.psess
-*.vsp
-*.vspx
-*.sap
 
 ############################################
 # Archivos de base de datos locales
@@ -53,12 +47,8 @@ obj/
 *.g.i.cs
 
 ############################################
-# Configuración de IDE
+# Configuración de extensiones de IDE
 ############################################
-*.idea/
-.idea/
-*.iml
-*.ncrunch*
 _ReSharper*/
 *_ReSharper.*
 *.DotSettings.user
