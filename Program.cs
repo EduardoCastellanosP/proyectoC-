@@ -1,2 +1,65 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System;
+
+
+
+
+
+
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Title = "☕ Colombian Coffee - Menú Principal";
+        MostrarMenuPrincipal();
+    }
+
+    static void MostrarMenuPrincipal()
+    {
+        while (true)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("╔════════════════════════════════════════════╗");
+            Console.WriteLine("║        ☕  Colombian Coffee  ☕             ║");
+            Console.WriteLine("║            Menú Principal                  ║");
+            Console.WriteLine("╠════════════════════════════════════════════╣");
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("║ 1. 🔑 Login                                 ║");
+            Console.WriteLine("║ 2. 🌱 Explorar variedades                   ║");
+            Console.WriteLine("║ 3. 🛠 Panel Admin                           ║");
+            Console.WriteLine("║ 4. 📄 Generar PDF                           ║");
+            Console.WriteLine("║ 5. 🚪 Salir                                 ║");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("╚════════════════════════════════════════════╝");
+            Console.ResetColor();
+            Console.Write("Seleccione una opción: ");
+            string opcion = Console.ReadLine() ?? "";
+
+            switch (opcion)
+            {
+                case "1":
+                    // Aquí llaman al método de Login
+                    break;
+                case "2":
+                    // Aquí llaman al método de ExplorarVariedades
+                    break;
+                case "3":
+                    // Aquí llaman al método de PanelAdmin
+                    break;
+                case "4":
+                    Console.WriteLine("👋 Saliendo del sistema...");
+                    return;
+                default:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("❌ Opción inválida. Intente nuevamente.");
+                    Console.ResetColor();
+                    Console.ReadKey();
+                    break;
+            }
+        }
+    }
+}

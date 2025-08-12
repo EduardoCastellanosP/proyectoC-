@@ -1,21 +1,21 @@
 ############################################
-# Carpetas de compilación y dependencias
+# Archivos y carpetas de compilación (.NET)
 ############################################
 **/bin/
 **/obj/
 [Bb]uild/
 [Bb]uilds/
+[Bb]in/
+[Oo]bj/
 
 ############################################
-# Configuración local de Visual Studio / VS Code
+# Archivos de compilación de VS Code / Visual Studio
 ############################################
 .vs/
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
-.idea/
-*.iml
 
 ############################################
 # Archivos temporales y de depuración
