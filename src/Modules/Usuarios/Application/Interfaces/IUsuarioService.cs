@@ -8,7 +8,7 @@ namespace proyectc_.src.Modules.Usuarios.Application.Interfaces
 {
     public interface IUsuarioService
     {
-        Task RegistrarUsuarioAsync(string nombre, string clave);
+        Task RegistrarUsuarioAsync(string nombre, string clave, string rol= "Operador");
         Task<IEnumerable<Usuario>> ConsultarUsuariosAsync();
         Task<Usuario?> ObtenerUsuarioPorIdAsync(int id);
     }

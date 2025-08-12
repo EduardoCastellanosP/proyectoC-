@@ -11,6 +11,9 @@ namespace proyectc_.src.Modules.Usuarios.Application.Interfaces
         Task<IEnumerable<Usuario>> GetAllAsync();
         Task<Usuario?> GetByIdAsync(int id);
         void Add(Usuario entity);
+        void Update(Usuario entity);
+        void Remove(Usuario entity);
+         Task<bool> ExistsByNombreAsync(string nombre);
         Task SaveAsync();
     }
 }

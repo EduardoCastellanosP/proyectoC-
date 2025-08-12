@@ -1,28 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using proyectc_.src.Modules.Usuarios.Domain.Entities;
 
-namespace proyectc_.src.Shared.Configuration
+namespace proyectc_.src.Modules.Usuarios.Infrastructure.Configurations;
+
+public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
 {
-    public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
+    public void Configure(EntityTypeBuilder<Usuario> b)
     {
-        public void Configure(EntityTypeBuilder<Usuario> builder)
-        {
-            builder.ToTable("usuarios");
+        b.ToTable("usuarios");
+        b.HasKey(x => x.Id);
 
-            builder.HasKey(u => u.Id);
+        b.Property(x => x.Nombre).IsRequired().HasMaxLength(50);
+        b.Property(x => x.Clave).IsRequired().HasMaxLength(200);
+        b.Property(x => x.Rol).IsRequired();              // enum -> int (columna: Rol)
 
-            builder.Property(u => u.Nombre)
-                   .IsRequired()
-                   .HasMaxLength(100);
-
-            builder.Property(u => u.Clave)
-                   .IsRequired()
-                   .HasMaxLength(100);
-        }
+        b.HasIndex(x => x.Nombre).IsUnique();
     }
 }
