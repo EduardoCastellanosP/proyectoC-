@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
+using proyectc_.src.Modules.Usuarios.Domain.Entities;
 using proyectc_.src.Shared.Entities;
 using proyectc_.src.Shared.Entities.Filtros;
 using proyectc_.src.Shared.Entities.Variedades;
