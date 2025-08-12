@@ -4,8 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
+<<<<<<< HEAD
 using proyectc_.src.Modules.Variedades.Domain.Entities;
 using proyectc_.src.Modules.Variedades.Infrastructure.Repositories;
+=======
+using proyectc_.src.Modules.Usuarios.Domain.Entities;
+using proyectc_.src.Shared.Entities;
+using proyectc_.src.Shared.Entities.Filtros;
+using proyectc_.src.Shared.Entities.Variedades;
+>>>>>>> origin/feature/usuarios
 
 
 namespace proyectc_.src.Shared.Context;
