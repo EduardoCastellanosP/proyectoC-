@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using proyectc_.src.Modules.Usuarios.Application.Interfaces;
 using proyectc_.src.Modules.Usuarios.Domain.Entities;
 using proyectc_.src.Shared.Context;
 
 namespace proyectc_.src.Modules.Usuarios.Infrastructure.Repositories
 {
-    public class UsuarioRepository
+    public class UsuarioRepository : IUsuarioRepository
     {
         private readonly AppDbContext _context;
         public UsuarioRepository(AppDbContext context)
