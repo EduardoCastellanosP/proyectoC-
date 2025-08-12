@@ -37,10 +37,7 @@ namespace proyectc_.src.Modules.Filtros.Application.Services
             };
         }
 
-        public Variedad GetVarietyDetails(int id)
-        {
-            return _repository.GetAllVarieties().FirstOrDefault(v => v.Id == id);
-        }
+        
         
     }
 }
