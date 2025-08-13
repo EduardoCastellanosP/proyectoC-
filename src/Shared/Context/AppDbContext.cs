@@ -24,6 +24,7 @@ public class AppDbContext : DbContext
     public DbSet<Variedad> Variedades => Set<Variedad>();
 
 
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
