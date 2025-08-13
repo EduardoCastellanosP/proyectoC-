@@ -1,20 +1,15 @@
-using System;
+using Microsoft.EntityFrameworkCore;
+using proyectc_.src.Modules.Variedades.Domain.Entities;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using proyectc_.src.Modules.Filtros.Domain.Entities;
+using proyectc_.src.Modules.Filtros.Application.Interfaces;
+
+
+
 
 namespace proyectc_.src.Modules.Filtros.Application.Interfaces
 {
-    public interface IFiltroRepository
+    public interface IFiltrosRepository
     {
-        IEnumerable<Variedad> GetAllVarieties();
-        IEnumerable<Variedad> FilterVarieties(Dictionary<string, object> filters);
-        IEnumerable<Porte> GetPorteOptions();
-        IEnumerable<TamanoGrano> GetTamanoGranoOptions();
-        IEnumerable<RendimientoPotencial> GetRendimientoOptions();
-        IEnumerable<CalidadAltitudNivel> GetCalidadAltitudOptions();
-        IEnumerable<Enfermedad> GetEnfermedadOptions();
-        IEnumerable<ResistenciaNivel> GetResistenciaNivelOptions();
+        Task<List<Filtro>> GetAllAsync();
     }
 }

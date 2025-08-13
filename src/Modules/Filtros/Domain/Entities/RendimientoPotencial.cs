@@ -8,6 +8,6 @@ namespace proyectc_.src.Modules.Filtros.Domain.Entities
     public class RendimientoPotencial
     {
         public int Id { get; set; }
-        public string Nombre { get; set; } = string.Empty; // Muy bajo..Excepcional
+        public string Nombre { get; set; } = "";
     }
 }

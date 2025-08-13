@@ -7,7 +7,7 @@ namespace proyectc_.src.Modules.Filtros.Domain.Entities
 {
     public class TamanoGrano
     {
-         public int Id { get; set; }
-        public string Nombre { get; set; } = string.Empty; // Pequeño / Medio / Gra
+        public int Id { get; set; }
+        public string Nombre { get; set; } = "";
     }
 }

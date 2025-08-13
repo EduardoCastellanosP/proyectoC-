@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using proyectc_.src.Modules.Usuarios.Application.Interfaces;
 using proyectc_.src.Modules.Usuarios.Domain.Entities;
 using proyectc_.src.Shared.Context;
+using Microsoft.EntityFrameworkCore;
+
 
 
 namespace proyectc_.src.Modules.Usuarios.Infrastructure.Repositories;
@@ -26,19 +27,19 @@ public class UsuarioRepository : IUsuarioRepository
     }
     public async Task<IEnumerable<Usuario?>> GetAllAsync() =>
         await _context.Usuarios.AsNoTracking().ToListAsync();
-    
-    public async Task<Usuario?> GetByNombreAsync(string nombre)
-        {
-            var n = (nombre ?? string.Empty).Trim();
-            return await _context.Usuarios
-                .FirstOrDefaultAsync(u => u.Nombre == n);
-        }
 
-      public async Task<bool> ExistsByNombreAsync(string nombre)
-        {
-            var n = (nombre ?? string.Empty).Trim();
-            return await _context.Usuarios.AnyAsync(u => u.Nombre == n);
-        }
+    public async Task<Usuario?> GetByNombreAsync(string nombre)
+    {
+        var n = (nombre ?? string.Empty).Trim();
+        return await _context.Usuarios
+            .FirstOrDefaultAsync(u => u.Nombre == n);
+    }
+
+    public async Task<bool> ExistsByNombreAsync(string nombre)
+    {
+        var n = (nombre ?? string.Empty).Trim();
+        return await _context.Usuarios.AnyAsync(u => u.Nombre == n);
+    }
     public void Add(Usuario entity) =>
         _context.Usuarios.Add(entity);
     public async Task SaveAsync() =>
@@ -50,4 +51,4 @@ public class UsuarioRepository : IUsuarioRepository
     public void Update(Usuario entity) =>
         _context.SaveChanges();
 
-    }
+}

@@ -1,43 +1,58 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using proyectc_.src.Modules.Filtros.Application.Interfaces;
 using proyectc_.src.Modules.Filtros.Domain.Entities;
 
 namespace proyectc_.src.Modules.Filtros.Application.Services
 {
-    public class FiltroService : IFiltroService
+    public class FiltrosService : IFiltrosService
     {
-        private readonly IFiltroRepository _repository;
+        private readonly IFiltrosRepository _repo;
+        public FiltrosService(IFiltrosRepository repo) => _repo = repo;
 
-        public FiltroService(IFiltroRepository repository)
+        public async Task<List<Filtro>> FiltrarPorTamanoGranoAsync(int tamanoGranoId)
         {
-            _repository = repository;
-        }
-        public IEnumerable<Variedad> ApplyFilters(Dictionary<string, object> filters)
-        {
-            // Validación básica de filtros
-            if (filters == null || !filters.Any())
-                return _repository.GetAllVarieties();
-
-            return _repository.FilterVarieties(filters);
+            var all = await _repo.GetAllAsync();
+            return all.Where(v => v.TamanoGranoId == tamanoGranoId).ToList();
         }
 
-        public Dictionary<string, IEnumerable<object>> GetFilterOptions()
+        public async Task<List<Filtro>> FiltrarPorPorteAsync(int porteId)
         {
-            return new Dictionary<string, IEnumerable<object>>
-            {
-                { "Porte", _repository.GetPorteOptions() },
-                { "TamanoGrano", _repository.GetTamanoGranoOptions() },
-                { "RendimientoPotencial", _repository.GetRendimientoOptions() },
-                { "CalidadAltitud", _repository.GetCalidadAltitudOptions() },
-                { "Enfermedades", _repository.GetEnfermedadOptions() },
-                { "NivelesResistencia", _repository.GetResistenciaNivelOptions() }
-            };
+            var all = await _repo.GetAllAsync();
+            return all.Where(v => v.PorteId == porteId).ToList();
         }
 
-        
-        
+        public async Task<List<Filtro>> FiltrarPorResistenciaAsync(int resistenciaNivelId)
+        {
+            var all = await _repo.GetAllAsync();
+            return all.Where(v => v.ResistenciaNivelId == resistenciaNivelId).ToList();
+        }
+
+        public async Task<List<Filtro>> FiltrarPorRendimientoAsync(int rendimientoPotencialId)
+        {
+            var all = await _repo.GetAllAsync();
+            return all.Where(v => v.RendimientoPotencialId == rendimientoPotencialId).ToList();
+        }
+
+        public async Task<List<Filtro>> FiltrarPorTipoCafeAsync(int tipoCafeId)
+        {
+            var all = await _repo.GetAllAsync();
+            return all.Where(v => v.TipoCafeId == tipoCafeId).ToList();
+        }
+
+        public async Task<List<Filtro>> FiltrarPorAltitudAsync(int? altMin, int? altMax)
+        {
+            var all = await _repo.GetAllAsync();
+            if (altMin.HasValue) all = all.Where(v => v.Altitud >= altMin.Value).ToList();
+            if (altMax.HasValue) all = all.Where(v => v.Altitud <= altMax.Value).ToList();
+            return all;
+        }
+
+        public async Task<List<Filtro>> BuscarPorNombreAsync(string contiene)
+        {
+            var all = await _repo.GetAllAsync();
+            contiene = (contiene ?? "").Trim();
+            return string.IsNullOrEmpty(contiene)
+                ? all
+                : all.Where(v => v.Nombre.Contains(contiene, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using System;
-
-
-
-
-
+using System.Threading.Tasks;
+using proyectc_.src.Modules.Usuarios.UI;
+using proyectc_.src.Modules.Variedades.UI;
+using proyectc_.src.Shared.Context;
+using Microsoft.EntityFrameworkCore;
 
 
 class Program
@@ -14,7 +14,7 @@ class Program
         MostrarMenuPrincipal();
     }
 
-    static void MostrarMenuPrincipal()
+    static async Task MostrarMenuPrincipal()
     {
         while (true)
         {
@@ -42,10 +42,10 @@ class Program
             switch (opcion)
             {
                 case "1":
-                    // Aquí llaman al método de Login
+                   await new UsuarioMenu(context).RenderMenu();
                     break;
                 case "2":
-                    // Aquí llaman al método de ExplorarVariedades
+                //    await new VariedadMenu(context).RenderMenu();
                     break;
                 case "3":
                     // Aquí llaman al método de PanelAdmin
