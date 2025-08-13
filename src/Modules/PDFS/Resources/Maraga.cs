@@ -1,15 +1,18 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
 namespace proyectc_.src.Modules.PDFS.Resources
 {
-    public class Typica
+    public class Maraga
     {
         static void Main()
         {
-            string rutaArchivo = "Typica_cafe.pdf";
+            string rutaArchivo = "maraga_cafe.pdf";
 
             // Crear documento tamaño A4
             Document documento = new Document(PageSize.A4, 40, 40, 40, 40);
@@ -30,7 +33,7 @@ namespace proyectc_.src.Modules.PDFS.Resources
                 var subtituloTablas = FontFactory.GetFont(FontFactory.HELVETICA_OBLIQUE, 12, verdeClaro);
 
                 // ===== Imagen principal =====
-                string rutaImagen = Path.Combine("Imagenes", "typica.png"); // Cambia por tu imagen
+                string rutaImagen = Path.Combine("Imagenes", "maraga.jpeg"); // Cambia por tu imagen
                 if (File.Exists(rutaImagen))
                 {
                     iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaImagen);
