@@ -7,13 +7,13 @@ namespace proyectc_.src.Modules.Variedades.Infrastructure.Configurations
 {
     public class ResistenciaNivelConfig : IEntityTypeConfiguration<ResistenciaNivel>
     {
-        public void Configure(EntityTypeBuilder<ResistenciaNivel> b)
+        public void Configure(EntityTypeBuilder<ResistenciaNivel> builder)
         {
-            b.ToTable("resistencia_nivel");
-            b.HasKey(x => x.Id);
-            b.Property(x => x.Id).HasColumnName("id");
-            b.Property(x => x.Nombre).IsRequired().HasMaxLength(100).HasColumnName("nombre");
-            b.HasIndex(x => x.Nombre).IsUnique();
+            builder.ToTable("resistencia_nivel");
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).HasColumnName("id");
+            builder.Property(x => x.Nombre).IsRequired().HasMaxLength(100).HasColumnName("nombre");
+            builder.HasIndex(x => x.Nombre).IsUnique();
         }
     }
 }

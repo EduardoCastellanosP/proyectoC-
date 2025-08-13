@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using proyectc_.src.Shared.Context;
 using proyectc_.src.Modules.Variedades.Domain.Entities;
 using proyectc_.src.Modules.Variedades.Application.Interfaces;
+using proyectc_.src.Modules.Filtros.Domain.Entities;
 
 
 namespace proyectc_.src.Modules.Variedades.Infrastructure.Repositories;

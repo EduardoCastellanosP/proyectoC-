@@ -22,7 +22,6 @@ namespace proyectc_.src.Modules.Variedades.Infrastructure.Configurations
 
             builder.Property(v => v.PorteId).HasColumnName("porte_id");
             builder.Property(v => v.TamanoGranoId).HasColumnName("tamano_grano_id");
-            builder.Property(v => v.AltitudMin).HasColumnName("altitud_min");
             builder.Property(v => v.AltitudMax).HasColumnName("altitud_max");
             builder.Property(v => v.RendimientoPotencialId).HasColumnName("rendimiento_potencial_id");
             builder.Property(v => v.CalidadAltitudNivelId).HasColumnName("calidad_altitud_nivel_id");
@@ -36,7 +35,6 @@ namespace proyectc_.src.Modules.Variedades.Infrastructure.Configurations
             builder.Property(v => v.Familia).HasMaxLength(100).HasColumnName("familia");
             builder.Property(v => v.GrupoGenetico).HasMaxLength(100).HasColumnName("grupo_genetico");
 
-            builder.Property(v => v.ImagenRelativa).HasMaxLength(255).HasColumnName("imagen_relativa");
 
             builder.Property(v => v.CreadoEn).HasColumnName("creado_en");
             builder.Property(v => v.ActualizadoEn).HasColumnName("actualizado_en");

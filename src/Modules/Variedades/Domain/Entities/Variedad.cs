@@ -17,7 +17,6 @@ namespace proyectc_.src.Modules.Variedades.Domain.Entities
         public int? PorteId { get; set; }
         public int? TamanoGranoId { get; set; }
 
-        public int? AltitudMin { get; set; }  // msnm
         public int? AltitudMax { get; set; }  // msnm
 
         public int? RendimientoPotencialId { get; set; }
@@ -32,7 +31,7 @@ namespace proyectc_.src.Modules.Variedades.Domain.Entities
         public string Familia { get; set; } = string.Empty;
         public string GrupoGenetico { get; set; } = string.Empty;
 
-        public string ImagenRelativa { get; set; } = string.Empty; // ej: "variedades/12/001_caturra.jpg"
+       
 
 
         public DateTime CreadoEn { get; set; } = DateTime.UtcNow;

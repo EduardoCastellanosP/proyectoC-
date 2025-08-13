@@ -2,9 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using proyectc_.src.Modules.Variedades.Domain.Entities;
 using System.Collections.Generic;
 using proyectc_.src.Modules.Filtros.Application.Interfaces;
-
-
-
+using System.Threading.Tasks;
+using System;
+using proyectc_.src.Modules.Filtros.Infrastructure.Repositories;
 
 namespace proyectc_.src.Modules.Filtros.Application.Interfaces
 {
