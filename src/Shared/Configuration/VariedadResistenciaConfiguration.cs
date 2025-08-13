@@ -7,33 +7,33 @@ namespace proyectc_.src.Modules.Variedades.Infrastructure.Configurations
 {
     public class VariedadResistenciaConfig : IEntityTypeConfiguration<VariedadResistencia>
     {
-        public void Configure(EntityTypeBuilder<VariedadResistencia> b)
+        public void Configure(EntityTypeBuilder<VariedadResistencia> builder)
         {
-            b.ToTable("variedad_resistencia");
+            builder.ToTable("variedad_resistencia");
 
-            b.HasKey(x => x.Id);
-            b.Property(x => x.Id).HasColumnName("id");
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).HasColumnName("id");
 
-            b.Property(x => x.VariedadId).HasColumnName("variedad_id");
-            b.Property(x => x.EnfermedadId).HasColumnName("enfermedad_id");
-            b.Property(x => x.ResistenciaNivelId).HasColumnName("resistencia_nivel_id");
+            builder.Property(x => x.VariedadId).HasColumnName("variedad_id");
+            builder.Property(x => x.EnfermedadId).HasColumnName("enfermedad_id");
+            builder.Property(x => x.Id).HasColumnName("resistencia_nivel_id");
 
-            b.HasIndex(x => new { x.VariedadId, x.EnfermedadId }).IsUnique();
+            builder.HasIndex(x => new { x.VariedadId, x.EnfermedadId }).IsUnique();
 
             // Relaciones (ajusta los nombres de navegación si las tienes en tus entidades)
-            b.HasOne<Variedad>()
+            builder.HasOne<Variedad>()
              .WithMany()
              .HasForeignKey(x => x.VariedadId)
              .OnDelete(DeleteBehavior.Cascade);
 
-            b.HasOne<Enfermedad>()
+            builder.HasOne<Enfermedad>()
              .WithMany()
              .HasForeignKey(x => x.EnfermedadId)
              .OnDelete(DeleteBehavior.Cascade);
 
-            b.HasOne<ResistenciaNivel>()
+            builder.HasOne<ResistenciaNivel>()
              .WithMany()
-             .HasForeignKey(x => x.ResistenciaNivelId)
+             .HasForeignKey(x => x.Id)
              .OnDelete(DeleteBehavior.Restrict);
         }
     }

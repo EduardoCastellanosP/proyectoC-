@@ -7,13 +7,13 @@ namespace proyectc_.src.Modules.Variedades.Infrastructure.Configurations
 {
     public class CalidadAltitudNivelConfig : IEntityTypeConfiguration<CalidadAltitudNivel>
     {
-        public void Configure(EntityTypeBuilder<CalidadAltitudNivel> b)
+        public void Configure(EntityTypeBuilder<CalidadAltitudNivel> builder)
         {
-            b.ToTable("calidad_altitud_nivel");
-            b.HasKey(x => x.Id);
-            b.Property(x => x.Id).HasColumnName("id");
-            b.Property(x => x.Nombre).IsRequired().HasMaxLength(100).HasColumnName("nombre");
-            b.HasIndex(x => x.Nombre).IsUnique();
+            builder.ToTable("calidad_altitud_nivel");
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).HasColumnName("id");
+            builder.Property(x => x.Nombre).IsRequired().HasMaxLength(100).HasColumnName("nombre");
+            builder.HasIndex(x => x.Nombre).IsUnique();
         }
     }
 }

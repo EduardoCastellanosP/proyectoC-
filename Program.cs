@@ -4,17 +4,22 @@ using proyectc_.src.Modules.Usuarios.UI;
 using proyectc_.src.Modules.Variedades.UI;
 using proyectc_.src.Shared.Context;
 using Microsoft.EntityFrameworkCore;
+using proyectc_.src.Shared.Helpers;
+using Microsoft.Extensions.Configuration;
 
 
-class Program
-{
-    static void Main(string[] args)
-    {
-        Console.Title = "☕ Colombian Coffee - Menú Principal";
-        MostrarMenuPrincipal();
-    }
 
-    static async Task MostrarMenuPrincipal()
+        
+      
+    
+
+    
+
+    using var context = DbContextFactory.Create();
+    await MostrarMenuPrincipal(context);
+
+
+    static async Task MostrarMenuPrincipal(AppDbContext context)
     {
         while (true)
         {
@@ -42,10 +47,10 @@ class Program
             switch (opcion)
             {
                 case "1":
-                   await new UsuarioMenu(context).RenderMenu();
+                    await new UsuarioMenu(context).RenderMenu();
                     break;
                 case "2":
-                //    await new VariedadMenu(context).RenderMenu();
+                    //    await new VariedadMenu(context).RenderMenu();
                     break;
                 case "3":
                     // Aquí llaman al método de PanelAdmin
@@ -62,4 +67,3 @@ class Program
             }
         }
     }
-}

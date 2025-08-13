@@ -7,13 +7,13 @@ namespace proyectc_.src.Modules.Variedades.Infrastructure.Configurations
 {
     public class RendimientoPotencialConfig : IEntityTypeConfiguration<RendimientoPotencial>
     {
-        public void Configure(EntityTypeBuilder<RendimientoPotencial> b)
+        public void Configure(EntityTypeBuilder<RendimientoPotencial> builder)
         {
-            b.ToTable("rendimiento_potencial");
-            b.HasKey(x => x.Id);
-            b.Property(x => x.Id).HasColumnName("id");
-            b.Property(x => x.Nombre).IsRequired().HasMaxLength(100).HasColumnName("nombre");
-            b.HasIndex(x => x.Nombre).IsUnique();
+            builder.ToTable("rendimiento_potencial");
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).HasColumnName("id");
+            builder.Property(x => x.Nombre).IsRequired().HasMaxLength(100).HasColumnName("nombre");
+            builder.HasIndex(x => x.Nombre).IsUnique();
         }
     }
 }
