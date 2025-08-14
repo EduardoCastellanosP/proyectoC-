@@ -6,11 +6,12 @@ using proyectc_.src.Modules.Variedades.Domain.Entities;
 
 namespace proyectc_.src.Modules.Variedades.Application.Interfaces;
 
-public interface IVariedadesService
+public interface IVariedadService
 {
     Task<IEnumerable<Variedad?>> ConsultarVariedadesAsync();
     Task<Variedad?> ObtenerVariedadPorIdAsync(int id);
     Task RegistrarVariedadAsync(Variedad entity);
     Task ActualizarVariedadAsync(Variedad entity);
     Task EliminarVariedadAsync(int id);
+    
 }
