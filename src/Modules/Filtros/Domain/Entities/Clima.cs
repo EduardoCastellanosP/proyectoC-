@@ -7,7 +7,7 @@ namespace proyectc_.src.Modules.Filtros.Domain.Entities
 {
     public class Clima
     {
-        public int Id { get; set; }
+        public int ClimaId { get; set; }
         public string Descripcion { get; set; } = string.Empty;
     }
 }

@@ -1,58 +1,66 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using proyectc_.src.Modules.Filtros.Application.Interfaces;
-using proyectc_.src.Modules.Filtros.Domain.Entities;
+using proyectc_.src.Modules.Variedades.Application.Interfaces;
+using proyectc_.src.Modules.Variedades.Domain.Entities;
 
 namespace proyectc_.src.Modules.Filtros.Application.Services
 {
     public class FiltrosService : IFiltrosService
     {
-        private readonly IFiltrosRepository _repo;
-        public FiltrosService(IFiltrosRepository repo) => _repo = repo;
+        private readonly IVariedadesRepository _repo;
 
-        public async Task<List<Filtro>> FiltrarPorTamanoGranoAsync(int tamanoGranoId)
+        public FiltrosService(IVariedadesRepository repo)
         {
-            var all = await _repo.GetAllAsync();
-            return all.Where(v => v.TamanoGranoId == tamanoGranoId).ToList();
+            _repo = repo;
         }
 
-        public async Task<List<Filtro>> FiltrarPorPorteAsync(int porteId)
+        // ===== Consultas base =====
+        public Task<IEnumerable<Variedad>> ConsultarVariedadesAsync()
+            => _repo.GetAllVariedadesAsync();
+
+        public Task<Variedad?> ObtenerVariedadPorIdAsync(int id)
+            => _repo.GetVariedadByIdAsync(id);
+
+        // ===== Filtros por Id (simple, en memoria) =====
+        public async Task<IEnumerable<Variedad>> FiltrarPorTamanoGranoIdAsync(int id)
         {
-            var all = await _repo.GetAllAsync();
-            return all.Where(v => v.PorteId == porteId).ToList();
+            var todas = await _repo.GetAllVariedadesAsync();
+            return todas.Where(v => v.TamanoGranoId == id).ToList();
         }
 
-        public async Task<List<Filtro>> FiltrarPorResistenciaAsync(int resistenciaNivelId)
+        public async Task<IEnumerable<Variedad>> FiltrarPorPorteIdAsync(int id)
         {
-            var all = await _repo.GetAllAsync();
-            return all.Where(v => v.ResistenciaNivelId == resistenciaNivelId).ToList();
+            var todas = await _repo.GetAllVariedadesAsync();
+            return todas.Where(v => v.PorteId == id).ToList();
         }
 
-        public async Task<List<Filtro>> FiltrarPorRendimientoAsync(int rendimientoPotencialId)
+       
+        // ===== Filtros extra =====
+        public async Task<IEnumerable<Variedad>> FiltrarPorAltitudAsync(int? altitudMin, int? altitudMax)
         {
-            var all = await _repo.GetAllAsync();
-            return all.Where(v => v.RendimientoPotencialId == rendimientoPotencialId).ToList();
+            var todas = await _repo.GetAllVariedadesAsync();
+            var q = todas.AsQueryable();
+
+            if (altitudMin.HasValue)
+                q = q.Where(v => v.AltitudMinima.HasValue && v.AltitudMinima.Value >= altitudMin.Value);
+
+            if (altitudMax.HasValue)
+                q = q.Where(v => v.AltitudMaxima.HasValue && v.AltitudMaxima.Value <= altitudMax.Value);
+
+            return q.ToList();
         }
 
-        public async Task<List<Filtro>> FiltrarPorTipoCafeAsync(int tipoCafeId)
+        public async Task<IEnumerable<Variedad>> BuscarPorNombreAsync(string texto)
         {
-            var all = await _repo.GetAllAsync();
-            return all.Where(v => v.TipoCafeId == tipoCafeId).ToList();
-        }
+            texto = (texto ?? "").Trim();
+            if (texto.Length == 0) return new List<Variedad>();
 
-        public async Task<List<Filtro>> FiltrarPorAltitudAsync(int? altMin, int? altMax)
-        {
-            var all = await _repo.GetAllAsync();
-            if (altMin.HasValue) all = all.Where(v => v.Altitud >= altMin.Value).ToList();
-            if (altMax.HasValue) all = all.Where(v => v.Altitud <= altMax.Value).ToList();
-            return all;
-        }
-
-        public async Task<List<Filtro>> BuscarPorNombreAsync(string contiene)
-        {
-            var all = await _repo.GetAllAsync();
-            contiene = (contiene ?? "").Trim();
-            return string.IsNullOrEmpty(contiene)
-                ? all
-                : all.Where(v => v.Nombre.Contains(contiene, StringComparison.OrdinalIgnoreCase)).ToList();
+            var todas = await _repo.GetAllVariedadesAsync();
+            return todas.Where(v => v.Nombre?.Contains(texto, StringComparison.OrdinalIgnoreCase) == true)
+                        .ToList();
         }
     }
 }

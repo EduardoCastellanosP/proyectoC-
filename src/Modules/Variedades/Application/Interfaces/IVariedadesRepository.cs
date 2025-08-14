@@ -1,18 +1,18 @@
-using System;
+// src/Modules/Variedades/Application/Interfaces/IVariedadesRepository.cs
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using proyectc_.src.Modules.Variedades.Domain.Entities;
-using proyectc_.src.Modules.Variedades.Application.Interfaces;
 
-namespace proyectc_.src.Modules.Variedades.Application.Interfaces;
-
-public interface IVariedadesRepository
+namespace proyectc_.src.Modules.Variedades.Application.Interfaces
 {
-    Task<IEnumerable<Variedad?>> GetAllVariedadesAsync();
-    Task<Variedad?> GetVariedadByIdAsync(int id);
-    void Add(Variedad entity);
-    void Update(Variedad entity);
-    void Remove(Variedad entity);
-    Task SaveChangesAsync();
+    public interface IVariedadesRepository
+    {
+        Task<IEnumerable<Variedad>> GetAllVariedadesAsync();
+        Task<Variedad?> GetByIdAsync(int id);
+
+        Task AddAsync(Variedad entity);
+        void Update(Variedad entity);
+        void Remove(Variedad entity);
+        Task<int> SaveChangesAsync();
+    }
 }

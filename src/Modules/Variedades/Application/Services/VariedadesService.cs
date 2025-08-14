@@ -2,71 +2,66 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using proyectc_.src.Modules.Variedades.Application.Interfaces;
+using proyectc_.src.Modules.Filtros.Application.Interfaces;
+using proyectc_.src.Modules.Variedades.Application.Interfaces; // IVariedadesRepository
 using proyectc_.src.Modules.Variedades.Domain.Entities;
 
-
-
-namespace proyectc_.src.Modules.Variedades.Application.Services;
-
-public class VariedadesService : IVariedadesService
+namespace proyectc_.src.Modules.Filtros.Application.Services
 {
-    private readonly IVariedadesRepository _repo;
-
-    public VariedadesService(IVariedadesRepository repo)
+    public class FiltrosService : IFiltrosService
     {
-        _repo = repo;
-    }
+        private readonly IVariedadesRepository _repo;
 
-    public async Task<IEnumerable<Variedad?>> ConsultarVariedadesAsync()
-    {
-        return await _repo.GetAllVariedadesAsync()!;
-    }
-
-    public async Task<Variedad?> ObtenerVariedadPorIdAsync(int id)
-    {
-        return await _repo.GetVariedadByIdAsync(id);
-    }
-
-    public async Task RegistrarVariedadAsync(string nombre, string descripcion, string origen)
-    {
-        var existentes = await _repo.GetAllVariedadesAsync();
-        if (existentes.Any(v => v.Nombre == nombre))
+        public FiltrosService(IVariedadesRepository repo)
         {
-            throw new ArgumentException("Ya existe una variedad con ese nombre.");
+            _repo = repo;
         }
 
-        var variedad = new Variedad
+        // ===== Consultas base =====
+        public Task<IEnumerable<Variedad>> ConsultarVariedadesAsync()
+            => _repo.GetAllVariedadesAsync();
+
+        public Task<Variedad?> ObtenerVariedadPorIdAsync(int id)
+            => _repo.GetByIdAsync(id); // <- FIX
+
+        // ===== Filtros por Id (simple, en memoria) =====
+        public async Task<IEnumerable<Variedad>> FiltrarPorTamanoGranoIdAsync(int tamanoGranoId)
         {
-            Nombre = nombre,
-            Descripcion = descripcion,
-            Origen = origen
-        };
+            var todas = await _repo.GetAllVariedadesAsync();
+            return todas.Where(v => v.TamanoGranoId == tamanoGranoId).ToList();
+        }
 
-        _repo.Add(variedad);
-       _repo.Update(variedad);
-    }
-
-    public async Task ActualizarVariedadAsync(int id, string nuevoNombre, string nuevoDescripcion, string nuevoOrigen)
-    {
-        var variedad = await _repo.GetVariedadByIdAsync(id);
-        if (variedad == null)
-        
-            throw new KeyNotFoundException("No se encontró la variedad especificada.");
-        variedad.Nombre = nuevoNombre;
-        variedad.Descripcion = nuevoDescripcion;
-        variedad.Origen = nuevoOrigen;
-
-
-        await _repo.UpdateVariedadAsync(entity);
-    }
-
-    public async Task EliminarVariedadAsync(int id)
-    {
-        var Variedad = await _repo.GetVariedadByIdAsync(id);
-        if (Variedad != null)
+        public async Task<IEnumerable<Variedad>> FiltrarPorPorteIdAsync(int porteId)
         {
-            await _repo.RemoveVariedadAsync(Variedad);
+            var todas = await _repo.GetAllVariedadesAsync();
+            return todas.Where(v => v.PorteId == porteId).ToList();
+        }
+
+        // ===== Filtros extra =====
+        public async Task<IEnumerable<Variedad>> FiltrarPorAltitudAsync(int? altitudMin, int? altitudMax)
+        {
+            var todas = await _repo.GetAllVariedadesAsync();
+            var q = todas.AsQueryable();
+
+            if (altitudMin.HasValue)
+                q = q.Where(v => v.AltitudMinima.HasValue && v.AltitudMinima.Value >= altitudMin.Value);
+
+            if (altitudMax.HasValue)
+                q = q.Where(v => v.AltitudMaxima.HasValue && v.AltitudMaxima.Value <= altitudMax.Value);
+
+            return q.ToList();
+        }
+
+        public async Task<IEnumerable<Variedad>> BuscarPorNombreAsync(string contiene)
+        {
+            contiene = (contiene ?? "").Trim();
+            if (contiene.Length == 0) return new List<Variedad>();
+
+            var todas = await _repo.GetAllVariedadesAsync();
+            return todas
+                .Where(v => !string.IsNullOrWhiteSpace(v.Nombre) &&
+                            v.Nombre.Contains(contiene, StringComparison.OrdinalIgnoreCase))
+                .ToList();
         }
     }
 }

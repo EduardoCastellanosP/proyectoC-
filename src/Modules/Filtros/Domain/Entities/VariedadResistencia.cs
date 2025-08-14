@@ -7,9 +7,13 @@ namespace proyectc_.src.Modules.Variedades.Domain.Entities
 {
     public class VariedadResistencia
     {
-         public int Id { get; set; }
-        public int VariedadId { get; set; }
+             public int VariedadId { get; set; }
+        public Variedad Variedad { get; set; } = null!;
+
         public int EnfermedadId { get; set; }
-        public int NivelId { get; set; } // ResistenciaNivel.Id
+        public Enfermedad Enfermedad { get; set; } = null!;
+
+        public int ResistenciaNivelId { get; set; }
+        public ResistenciaNivel ResistenciaNivel { get; set; } = null!;
     }
 }

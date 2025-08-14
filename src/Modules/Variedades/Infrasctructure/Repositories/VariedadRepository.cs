@@ -1,52 +1,57 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using proyectc_.src.Shared.Context;
-using proyectc_.src.Modules.Variedades.Domain.Entities;
 using proyectc_.src.Modules.Variedades.Application.Interfaces;
-using proyectc_.src.Modules.Filtros.Domain.Entities;
+using proyectc_.src.Modules.Variedades.Domain.Entities;
+using proyectc_.src.Shared.Context;
 
-
-namespace proyectc_.src.Modules.Variedades.Infrastructure.Repositories;
-
+namespace proyectc_.src.Modules.Variedades.Infrastructure.Repositories
+{
     public class VariedadRepository : IVariedadesRepository
     {
+        private readonly AppDbContext _db;
 
-        private readonly AppDbContext _context;
-
-        public VariedadRepository(AppDbContext context)
+        public VariedadRepository(AppDbContext db)
         {
-            _context = context;
+            _db = db;
+        }
+
+        public async Task<IEnumerable<Variedad>> GetAllVariedadesAsync()
+        {
+            // Incluye relaciones básicas que usas en el UI (ajusta si necesitas más)
+            return await _db.Variedades
+                .Include(v => v.TamanoGrano)
+                .Include(v => v.Porte)
+                .AsNoTracking()
+                .ToListAsync();
         }
 
         public async Task<Variedad?> GetVariedadByIdAsync(int id)
         {
-            return await _context.Variedades
-            .FirstOrDefaultAsync(v => v.Id == id);
+            return await _db.Variedades
+                .Include(v => v.TamanoGrano)
+                .Include(v => v.Porte)
+                .FirstOrDefaultAsync(v => v.Id == id);
         }
 
-        public async Task<IEnumerable<Variedad>> GetAllAsync()
+        public async Task AddAsync(Variedad entity)
         {
-            return await _context.Variedades.ToListAsync();
-        }
-
-        public void Add(Variedad entity)
-        {
-            _context.Variedades.Add(entity);
-
+            await _db.Variedades.AddAsync(entity);
         }
 
         public void Update(Variedad entity)
         {
-
-            _context.SaveChangesAsync();
+            _db.Variedades.Update(entity);
         }
 
         public void Remove(Variedad entity)
         {
-            _context.Variedades.Remove(entity);
+            _db.Variedades.Remove(entity);
         }
 
+        public Task<int> SaveChangesAsync()
+        {
+            return _db.SaveChangesAsync();
+        }
     }
+}

@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using proyectc_.src.Shared.Context;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+
 
 namespace proyectc_.src.Shared.Helpers
 {

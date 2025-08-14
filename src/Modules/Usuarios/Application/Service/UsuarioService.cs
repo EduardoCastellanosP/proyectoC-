@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using proyectc_.src.Modules.Usuarios.Application.Interfaces;
 using proyectc_.src.Modules.Usuarios.Domain.Entities;
 
+
+
 namespace proyectc_.src.Modules.Usuarios.Application.Service
 {
     public class UsuarioService : IUsuarioService
@@ -22,7 +24,7 @@ namespace proyectc_.src.Modules.Usuarios.Application.Service
         {
             return await _repo.GetByIdAsync(id);
         }
-        public async Task RegistrarUsuarioAsync(string nombre, string clave)
+        public async Task RegistrarUsuarioAsync(string nombre, string clave, string rol = "Operador")
         {
             var existentes = await _repo.GetAllAsync();
 

@@ -7,7 +7,9 @@ namespace proyectc_.src.Modules.Variedades.Domain.Entities
 {
     public class Porte
     {
-        public int Id { get; set; }
-        public string Nombre { get; set; } = string.Empty; // Alto / Bajo
+        public int PorteId { get; set; }
+        public string Nombre { get; set; } = "";
+        public string Descripcion { get; set; } = "";
+        public ICollection<Variedad> Variedades { get; set; } = new List<Variedad>();
     }
 }

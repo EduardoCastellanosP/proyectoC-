@@ -1,61 +1,42 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using proyectc_.src.Modules.Usuarios.Domain.Entities;
-using proyectc_.src.Modules.Filtros.Domain.Entities;
 using proyectc_.src.Modules.Variedades.Domain.Entities;
+using proyectc_.src.Modules.Filtros.Domain.Entities;
 
-
-namespace proyectc_.src.Shared.Context;
-
-public class AppDbContext : DbContext
+namespace proyectc_.src.Shared.Context
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    public class AppDbContext : DbContext
     {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}
+
+        public DbSet<Variedad> Variedades { get; set; } = null!;
+        public DbSet<TamanoGrano> TamanosGrano { get; set; } = null!;
+        public DbSet<Porte> Portes { get; set; } = null!;
+
+        protected override void OnModelCreating(ModelBuilder mb)
+        {
+            mb.Entity<Variedad>(e =>
+            {
+                e.Property(p => p.Nombre).HasMaxLength(200).IsRequired();
+                e.Property(p => p.Descripcion).HasMaxLength(1000);
+
+                e.HasOne(v => v.TamanoGrano).WithMany()
+                  .HasForeignKey(v => v.TamanoGranoId);
+
+                e.HasOne(v => v.Porte).WithMany()
+                  .HasForeignKey(v => v.PorteId);
+            });
+
+            mb.Entity<TamanoGrano>(e =>
+            {
+                e.Property(p => p.Nombre).HasMaxLength(200).IsRequired();
+                e.Property(p => p.Descripcion).HasMaxLength(1000);
+            });
+
+            mb.Entity<Porte>(e =>
+            {
+                e.Property(p => p.Nombre).HasMaxLength(200).IsRequired();
+                e.Property(p => p.Descripcion).HasMaxLength(1000);
+            });
+        }
     }
-
-    public DbSet<Usuario> Usuarios => Set<Usuario>();
-    public DbSet<Variedad> Variedades => Set<Variedad>();
-
-    public DbSet<TamanoGrano> TamanoGranos => Set<TamanoGrano>();
-    public DbSet<Porte> Portes => Set<Porte>();
-    public DbSet<ResistenciaNivel> ResistenciasNivel => Set<ResistenciaNivel>();
-    public DbSet<RendimientoPotencial> RendimientosPotenciales => Set<RendimientoPotencial>();
-    public DbSet<TipoCafe> TiposCafe => Set<TipoCafe>();
-    public DbSet<CalidadAltitudNivel> CalidadAltitudNiveles => Set<CalidadAltitudNivel>();
-    
-    public DbSet<Maduracion> Maduracions => Set<Maduracion>();
-
-    public DbSet<GrupoGenetico> GruposGeneticos => Set<GrupoGenetico>();
-
-    public DbSet<AltitudMaxima> AltitudMaximas => Set<AltitudMaxima>();
-   
-    public DbSet<Familia> Familias => Set<Familia>();
-
-    public DbSet<Obtentor> Obtentors => Set<Obtentor>();
-
-    public DbSet<Clima> Climas => Set<Clima>();
-
-    
-    public DbSet<TiempoCosecha> TiempoCosechas => Set<TiempoCosecha>();
-
-    public DbSet<Nutricion> Nutricions => Set<Nutricion>();
-
-    public DbSet<DensidadSiembra> DensidadSiembras => Set<DensidadSiembra>();
-
-    public DbSet<Enfermedad> Enfermedades => Set<Enfermedad>();
-
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
-    }
-
-
-
-
-
-
 }
