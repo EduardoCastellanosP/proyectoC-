@@ -46,11 +46,10 @@ namespace proyectc_.src.Modules.PDFS.Resources
                 documento.Add(new Paragraph("Coffea arabica var. typica'.", subtituloFuente));
                 documento.Add(new Paragraph("\n"));
 
+                //descripcion
                 var textoLibreFuente = FontFactory.GetFont(FontFactory.HELVETICA, 10);
                 documento.Add(new Paragraph(
-                    "This cultivar has received high cupping scores in multiple evaluations. " +
-                    "It performs well under irrigation and is classified as a 'Fine Robusta'. " +
-                    "Average beverage quality scored 10 points, with flavors of chocolate, caramel, and fruit.",
+                    "Esta variedad ha recibido altas puntuaciones en múltiples evaluaciones de taza. Se adapta bien a diferentes condiciones de cultivo y es reconocida por su perfil clásico y equilibrado. La calidad promedio de la bebida alcanza puntajes superiores a 85, con sabores suaves, florales y notas dulces.",
                     textoLibreFuente
                 ));
                 documento.Add(new Paragraph("\n"));
@@ -98,8 +97,7 @@ namespace proyectc_.src.Modules.PDFS.Resources
                 Celda("Nutricion", labelFuente, grisClaro);
                 Celda("Nitrógeno, Fósforo, Potasio, Calcio, Magnesio", valorFuente, BaseColor.WHITE);
 
-                Celda("Maduracion", labelFuente, grisClaro);
-                Celda("Tardía", valorFuente, BaseColor.WHITE);
+
 
                 documento.Add(tabla);
                 documento.Add(new Paragraph("\n"));

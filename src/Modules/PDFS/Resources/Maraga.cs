@@ -45,10 +45,11 @@ namespace proyectc_.src.Modules.PDFS.Resources
                 documento.Add(new Paragraph("\n"));
 
                 // ===== Título y subtítulo =====
-                documento.Add(new Paragraph("Typica", tituloFuente));
-                documento.Add(new Paragraph("Coffea arabica var. typica'.", subtituloFuente));
+                documento.Add(new Paragraph("Maragogipe", tituloFuente));
+                documento.Add(new Paragraph("Coffea arabica var. maragogype", subtituloFuente));
                 documento.Add(new Paragraph("\n"));
 
+                //descripcion
                 var textoLibreFuente = FontFactory.GetFont(FontFactory.HELVETICA, 10);
                 documento.Add(new Paragraph(
                     "This cultivar has received high cupping scores in multiple evaluations. " +
@@ -75,34 +76,32 @@ namespace proyectc_.src.Modules.PDFS.Resources
 
                 // Datos
                 Celda("Potencial de rendimiento", labelFuente, grisClaro);
-                Celda("Medio", valorFuente, BaseColor.WHITE);
+                Celda("Bajo", valorFuente, BaseColor.WHITE);
 
                 Celda("Porte", labelFuente, grisClaro);
                 Celda("Alto", valorFuente, BaseColor.WHITE);
 
                 Celda("Tamaño Grano", labelFuente, grisClaro);
-                Celda("Medio", valorFuente, BaseColor.WHITE);
+                Celda("Grande", valorFuente, BaseColor.WHITE);
 
                 Celda(" Altitud Optima", labelFuente, grisClaro);
-                Celda("1200-1800 msnm", valorFuente, BaseColor.WHITE);
+                Celda("800-1500 msnm", valorFuente, BaseColor.WHITE);
 
                 Celda("Calidad del grano", labelFuente, grisClaro);
-                Celda("5", valorFuente, BaseColor.WHITE);
+                Celda("3", valorFuente, BaseColor.WHITE);
 
                 Celda("Tiempo de Cosecha", labelFuente, grisClaro);
-                Celda("9-11 meses", valorFuente, BaseColor.WHITE);
+                Celda("2 a 6 semanas", valorFuente, BaseColor.WHITE);
 
                 Celda("Maduracion", labelFuente, grisClaro);
-                Celda("Tardía", valorFuente, BaseColor.WHITE);
+                Celda("lenta", valorFuente, BaseColor.WHITE);
 
                 Celda("Densidad Siembra", labelFuente, grisClaro);
-                Celda("2.0 m x 2.0 m", valorFuente, BaseColor.WHITE);
+                Celda("3.0 m x 2.5 m", valorFuente, BaseColor.WHITE);
 
                 Celda("Nutricion", labelFuente, grisClaro);
-                Celda("Nitrógeno, Fósforo, Potasio, Calcio, Magnesio", valorFuente, BaseColor.WHITE);
+                Celda("Nitrógeno, Fósforo, Potasio, Calcio, Magnesio, hierro, boro, zinc", valorFuente, BaseColor.WHITE);
 
-                Celda("Maduracion", labelFuente, grisClaro);
-                Celda("Tardía", valorFuente, BaseColor.WHITE);
 
                 documento.Add(tabla);
                 documento.Add(new Paragraph("\n"));
@@ -127,7 +126,7 @@ namespace proyectc_.src.Modules.PDFS.Resources
                 Celda2("Susceptible", valorFuente, BaseColor.WHITE);
 
                 Celda2("Antracnosis", labelFuente, grisClaro);
-                Celda2("Tolerante", valorFuente, BaseColor.WHITE);
+                Celda2("Susceptible", valorFuente, BaseColor.WHITE);
 
                 Celda2("Nematodos", labelFuente, grisClaro);
                 Celda2("Susceptible", valorFuente, BaseColor.WHITE);
@@ -151,13 +150,13 @@ namespace proyectc_.src.Modules.PDFS.Resources
                     tabla3.AddCell(celda);
                 }
                 Celda3("Obtentor", labelFuente, grisClaro);
-                Celda3("Natural(Etiopia)", valorFuente, BaseColor.WHITE);
+                Celda3("Mutación natural en Brasil", valorFuente, BaseColor.WHITE);
 
                 Celda3("Familia", labelFuente, grisClaro);
-                Celda3("Tipyca", valorFuente, BaseColor.WHITE);
+                Celda3("Rubiaceae", valorFuente, BaseColor.WHITE);
 
                 Celda3("Grupo", labelFuente, grisClaro);
-                Celda3("Landrace", valorFuente, BaseColor.WHITE);
+                Celda3("Typica", valorFuente, BaseColor.WHITE);
 
                 documento.Add(tabla3);
 

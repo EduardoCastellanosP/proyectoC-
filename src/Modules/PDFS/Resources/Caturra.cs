@@ -45,15 +45,15 @@ namespace proyectc_.src.Modules.PDFS.Resources
                 documento.Add(new Paragraph("\n"));
 
                 // ===== Título y subtítulo =====
-                documento.Add(new Paragraph("Typica", tituloFuente));
-                documento.Add(new Paragraph("Coffea arabica var. typica'.", subtituloFuente));
+                documento.Add(new Paragraph("Caturra", tituloFuente));
+                documento.Add(new Paragraph("Coffea arabica var. caturra", subtituloFuente));
                 documento.Add(new Paragraph("\n"));
+
+                //descripcion
 
                 var textoLibreFuente = FontFactory.GetFont(FontFactory.HELVETICA, 10);
                 documento.Add(new Paragraph(
-                    "This cultivar has received high cupping scores in multiple evaluations. " +
-                    "It performs well under irrigation and is classified as a 'Fine Robusta'. " +
-                    "Average beverage quality scored 10 points, with flavors of chocolate, caramel, and fruit.",
+                    "Variedad popular por su porte compacto y facilidad de manejo, Caturra muestra un buen desempeño en sistemas intensivos. La calidad en taza es notable, con sabores dulces, cítricos y balanceados, alcanzando puntajes entre 82 y 86 en evaluaciones de calidad.",
                     textoLibreFuente
                 ));
                 documento.Add(new Paragraph("\n"));
@@ -75,34 +75,32 @@ namespace proyectc_.src.Modules.PDFS.Resources
 
                 // Datos
                 Celda("Potencial de rendimiento", labelFuente, grisClaro);
-                Celda("Medio", valorFuente, BaseColor.WHITE);
+                Celda("Alto", valorFuente, BaseColor.WHITE);
 
                 Celda("Porte", labelFuente, grisClaro);
-                Celda("Alto", valorFuente, BaseColor.WHITE);
+                Celda("Bajo", valorFuente, BaseColor.WHITE);
 
                 Celda("Tamaño Grano", labelFuente, grisClaro);
                 Celda("Medio", valorFuente, BaseColor.WHITE);
 
                 Celda(" Altitud Optima", labelFuente, grisClaro);
-                Celda("1200-1800 msnm", valorFuente, BaseColor.WHITE);
+                Celda("1,200–2,000 msnm", valorFuente, BaseColor.WHITE);
 
                 Celda("Calidad del grano", labelFuente, grisClaro);
-                Celda("5", valorFuente, BaseColor.WHITE);
+                Celda("4", valorFuente, BaseColor.WHITE);
 
                 Celda("Tiempo de Cosecha", labelFuente, grisClaro);
-                Celda("9-11 meses", valorFuente, BaseColor.WHITE);
+                Celda("6–8 meses", valorFuente, BaseColor.WHITE);
 
                 Celda("Maduracion", labelFuente, grisClaro);
-                Celda("Tardía", valorFuente, BaseColor.WHITE);
+                Celda("Media", valorFuente, BaseColor.WHITE);
 
                 Celda("Densidad Siembra", labelFuente, grisClaro);
-                Celda("2.0 m x 2.0 m", valorFuente, BaseColor.WHITE);
+                Celda("1.8 m x 1.8 m", valorFuente, BaseColor.WHITE);
 
                 Celda("Nutricion", labelFuente, grisClaro);
-                Celda("Nitrógeno, Fósforo, Potasio, Calcio, Magnesio", valorFuente, BaseColor.WHITE);
+                Celda("Nitrógeno, Fósforo, Potasio, Calcio, Magnesio, azufre, boro, zinc, hierro y manganeso", valorFuente, BaseColor.WHITE);
 
-                Celda("Maduracion", labelFuente, grisClaro);
-                Celda("Tardía", valorFuente, BaseColor.WHITE);
 
                 documento.Add(tabla);
                 documento.Add(new Paragraph("\n"));
@@ -124,13 +122,13 @@ namespace proyectc_.src.Modules.PDFS.Resources
                     tabla2.AddCell(celda);
                 }
                 Celda2("Roya", labelFuente, grisClaro);
-                Celda2("Susceptible", valorFuente, BaseColor.WHITE);
-
-                Celda2("Antracnosis", labelFuente, grisClaro);
                 Celda2("Tolerante", valorFuente, BaseColor.WHITE);
 
-                Celda2("Nematodos", labelFuente, grisClaro);
+                Celda2("Antracnosis", labelFuente, grisClaro);
                 Celda2("Susceptible", valorFuente, BaseColor.WHITE);
+
+                Celda2("Nematodos", labelFuente, grisClaro);
+                Celda2("Resistente", valorFuente, BaseColor.WHITE);
 
                 documento.Add(tabla2);
                 documento.Add(new Paragraph("\n"));
@@ -151,13 +149,13 @@ namespace proyectc_.src.Modules.PDFS.Resources
                     tabla3.AddCell(celda);
                 }
                 Celda3("Obtentor", labelFuente, grisClaro);
-                Celda3("Natural(Etiopia)", valorFuente, BaseColor.WHITE);
+                Celda3("Mutación natural en Brasil", valorFuente, BaseColor.WHITE);
 
                 Celda3("Familia", labelFuente, grisClaro);
-                Celda3("Tipyca", valorFuente, BaseColor.WHITE);
+                Celda3("Bourbon", valorFuente, BaseColor.WHITE);
 
                 Celda3("Grupo", labelFuente, grisClaro);
-                Celda3("Landrace", valorFuente, BaseColor.WHITE);
+                Celda3("Típica", valorFuente, BaseColor.WHITE);
 
                 documento.Add(tabla3);
 
